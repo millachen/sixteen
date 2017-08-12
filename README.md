@@ -1,3 +1,3 @@
 # sixteen
 
-[Play it here!](spiel.html)
+[Play it here!](https://millachen.github.io/sixteen/spiel.html)
