@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <title>Spiel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Aclonica|Almendra+Display|Chathura:800|Vollkorn:400" rel="stylesheet">
+  <style>
+   body{
+   	background: rgba(95,82,91,1);
+   	text-align: center;
+   }
+
+   @media (max-width: 350px){
+    .highscore{
+    margin-top: 9px;
+    font-size: 22px;
+    width: 69px;
+   }
+   .logo{
+    top: 8.57px;
+    left: 95px;
+   }
+   .englishF{
+    margin-top:211px;
+    font-size: 35px;
+   }
+   .deutschF{
+    margin-top: 9px;
+    font-size: 35px;
+   }
+   .descriptionpage{
+    font-size: 25px;
+  }
+   .arrowF{
+    margin-top: 1;
+   }
+   .option {
+    width: 11.998px;
+    height: 11.998px;
+   }
+   #sound{
+    margin-bottom: 3px;
+    left:257.1px;
+    top: 8.57px;
+   }
+   #help{
+    left:271.669px;
+    top: 8.57px;
+   }
+   #daynight{
+    left:257.1px;
+    top: 23.139px;
+   }
+   #description{
+    left:271.669px;
+    top: 23.139px;
+   }
+   .score_f{
+    margin-top: -171.4px;
+    font-size: 59.99px;
+   }
+    .playbutton{
+    margin-top: 184px;
+    width: 239.9px;
+    background-color: rgb(255,207,0);
+   padding: 15px;
+    font-size: 47px;
+    margin-left: 13px;
+   }
+   .time{
+    margin-top: 13px;
+    margin-left: 25px;
+    height: 60px;
+    width: 240px;
+   }
+   .scorebox{
+    margin-top: 15px;
+    font-size: 34px;
+   }
+   .container {
+    margin-top: 15px;
+    margin-left: 26px;
+    width: 240px;
+    height: 240px;
+   }
+   .row {
+    height: 58px;
+    width: 240px;
+    margin-bottom: 2px;
+   }
+   .box {
+    width: 58px;
+    height: 58px;
+    margin-right: 2px;
+    border-radius: 4px 4px 4px 4px;
+   }
+   .gameover{
+    font-size: 42px;
+    margin-top: 50%;
+   }
+   .arrow{
+    margin-top: 9px;
+    margin-left: 9px;
+    width: 26px;
+   }
+   }
+   @media (min-width: 350px) and (max-width: 380px){
+    .highscore{
+    margin-top: 10px;
+    font-size: 25px;
+    width: 80px;
+   }
+   .englishF{
+    margin-top:230px;
+    font-size: 39px;
+   }
+   .deutschF{
+    margin-top: 10px;
+    font-size: 39px;
+   }
+   .descriptionpage{
+    font-size: 26px;
+  }
+   .arrowF{
+    margin-top: 11px;
+   }
+   .logo{
+    top: 10px;
+    left: 112px;
+  }
+   .option {
+    width: 14px;
+    height: 14px;
+   }
+   #sound{
+    margin-bottom: 3px;
+    left:300px;
+    top: 10px;
+   }
+   #help{
+    left:317px;
+    top: 10px;´
+   }
+   #daynight{
+    left:300px;
+    top: 27px;
+   }
+   #description{
+    left:317px;
+    top: 27px;
+   }
+   .score_f{
+    margin-top: -200px;
+    font-size: 70px;
+   }
+    .playbutton{
+    margin-top: 215px;
+    width: 280px;
+    background-color: rgb(255,207,0);
+   padding: 17px;
+    font-size: 55px;
+    margin-left: 15px;
+   }
+   .time{
+    margin-top: 15px;
+    margin-left: 30px;
+    height: 70px;
+    width: 280px;
+   }
+   .scorebox{
+    margin-top: 17.5px;
+    font-size: 40px;
+   }
+   .container {
+    margin-top: 17.5px;
+    margin-left: 30px;
+    width: 280px;
+    height: 280px;
+   }
+   .row {
+    height: 68.5px;
+    width: 280px;
+    margin-bottom: 2px;
+   }
+   .box {
+    width: 68.5px;
+    height: 68.5px;
+    margin-right: 2px;
+    border-radius: 5px 5px 5px 5px;
+   }
+   .gameover{
+    font-size: 50px;
+    margin-top: 50%;
+   }
+   .arrow{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 30px;
+   }
+   }
+@media (min-width: 380px) and (max-width: 415px){
+    .highscore{
+    margin-top: 11px;
+    font-size: 28px;
+    width: 90px;
+   }
+   .logo{
+    top: 11px;
+    left: 120px;
+  }
+   .englishF{
+    margin-top:248px;
+    font-size: 44px;
+   }
+   .deutschF{
+    margin-top: 11px;
+    font-size: 44px;
+   }
+   .descriptionpage{
+    font-size: 28px;
+  }
+   .arrowF{
+    margin-top: 12px;
+   }
+   .option {
+    width: 16px;
+    height: 16px;
+   }
+   #sound{
+    margin-bottom: 3px;
+    left:336px;
+    top: 11px;
+   }
+   #help{
+    left:355px;
+    top: 11px;´
+   }
+   #daynight{
+    left:336px;
+    top: 30px;
+   }
+   #description{
+    left:355px;
+    top: 30px;
+   }
+   .score_f{
+    margin-top: -224px;
+    font-size: 78px;
+   }
+    .playbutton{
+    margin-top: 240px;
+    width: 313px;
+   padding: 19px;
+    font-size: 62px;
+    margin-left: 17px;
+   }
+   .time{
+    margin-top: 17px;
+    margin-left: 34px;
+    height: 78px;
+    width: 314px;
+   }
+   .scorebox{
+    margin-top: 17.5px;
+    font-size: 40px;
+   }
+   .container {
+    margin-top: 20px;
+    margin-left: 36px;
+    width: 314px;
+    height: 314px;
+   }
+   .row {
+    height: 77px;
+    width: 314px;
+    margin-bottom: 2px;
+   }
+   .box {
+    width: 77px;
+    height: 77px;
+    margin-right: 2px;
+    border-radius: 6px 6px 6px 6px;
+   }
+   .gameover{
+    font-size: 56px;
+    margin-top: 50%;
+   }
+   .arrow{
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 33px;
+   }
+}
+
+   @media (min-width: 415px) {
+    .highscore{
+    margin-top: 12px;
+    font-size: 31px;
+    width: 98px;
+   }
+   .logo{
+    top:10px;
+    left: 131px;
+  }
+   .englishF{
+    margin-top:276px;
+    font-size: 47px;
+   }
+   .deutschF{
+    margin-top: 12px;
+    font-size: 47px;
+   }
+   .descriptionpage{
+    font-size: 30px;
+  }
+   .arrowF{
+    margin-top: 13px;
+   }
+   .option {
+    width: 17px;
+    height: 17px;
+   }
+   #sound{
+    margin-bottom: 4px;
+    left:355px;
+    top: 12px;
+   }
+   #help{
+    left:376px;
+    top: 12px;´
+   }
+   #daynight{
+    left:355px;
+    top: 33px;
+   }
+   #description{
+    left:376px;
+    top: 33px;
+   }
+   .score_f{
+    margin-top: -244px;
+    font-size: 85px;
+   }
+    .playbutton{
+    margin-top: 262px;
+    width: 342px;
+    background-color: rgb(255,207,0);
+   padding: 20px;
+    font-size: 67px;
+    margin-left: 18px;
+   }
+   .time{
+    margin-top: 18px;
+    margin-left: 37px;
+    height: 85px;
+    width: 342px;
+   }
+   .scorebox{
+    margin-top: 21px;
+    font-size: 49px;
+   }
+   .container {
+    margin-top: 21px;
+    margin-left: 37px;
+    width: 342px;
+    height: 27px;
+   }
+   .row {
+    height: 84px;
+    width: 342px;
+    margin-bottom: 2px;
+   }
+   .box {
+    width: 84px;
+    height: 84px;
+    margin-right: 2px;
+    border-radius: 6px 6px 6px 6px;
+   }
+   .gameover{
+    font-size: 61px;
+    margin-top: 50%;
+   }
+   .arrow{
+    margin-top: 12px;
+    margin-left: 12px;
+    width: 37px;
+   }
+   }
+   .highscore{
+    font-family: 'Passion One', cursive;
+    color: rgba(225,220,238,1);
+   }
+   .logo{
+    position: absolute;
+   }
+   .option {
+    border-radius: 50%;
+   }
+   #sound{
+    background-color: rgb(234,112,173);
+    position: absolute
+   }
+   #help{
+    background-color: rgb(240,179,97);
+    position: absolute;
+   }
+   #daynight{
+    background-color: rgb(111,151,237);
+    position: absolute;
+   }
+   #description{
+    background-color: rgb(99,207,136);
+    position: absolute;
+   }
+   .score_f{
+    font-family: 'Passion One', cursive;
+    color: rgba(225,220,238,1);
+   }
+    .playbutton{
+    font-family: 'Passion One', cursive;
+    background-color: rgb(255,207,0);
+    border: none;
+    color:  rgba(95,82,91,1);
+   /* width: 90%;*/
+    text-align: center;
+   }
+   .time{
+    color:rgb(225, 35, 17);
+   }
+   .scorebox{
+    font-family: 'Passion One', cursive;
+    color: rgba(225,220,238,1);
+   }
+   .row:last-child{
+      margin-bottom: 0px;
+   }
+   .box {
+   	float: left;
+   }
+   .box:last-child {
+    margin-right: 0px;
+   }
+   .gameover{
+    text-align: center;
+    background-color: rgb(225,35,17);
+    color: "black";
+    margin-top: 50%;
+    font-family: 'Press Start 2P', cursive;
+   }
+   .englishF{
+    font-family: 'Chathura', sans-serif;
+    background-color: rgba(225,220,238,1);
+    color: rgba(95,82,91,1);
+    width: 70%;
+    margin-left: 15%;
+   }
+   .deutschF{
+    font-family: 'Chathura', sans-serif;
+    background-color: rgba(225,220,238,1);
+    color: rgba(95,82,91,1);
+    width: 70%;
+    margin-left: 15%;
+    
+   }
+   .arrowF{
+    width: 40px;
+    margin-left: 75%;
+   }
+   .descriptionpage{
+    font-family: 'Chathura', sans-serif;
+    color: rgba(225,220,238,1);
+    line-height: 100%;
+   }
+   .languageD{
+    width: 30%;
+   }
+   .languagenameD{
+     
+   }
+  </style>
+ </head>
+ <body>
+  <div id="highscore" class="highscore">
+ <img src="img/crown.png" width="30" height="30"> 0</div>
+     <div id="logo" class="logo"></div>
+  <div id="frontpage">
+   <div id="playbutton" class="playbutton">Play</div>
+    <div id="score_f" class="score_f">0</div>
+  </div>
+  <div id="game">
+   <div id="time" class="time"></div>
+   <div id="scorebox" class="scorebox"></div>
+   <div class="container">
+    <div class="row">
+  	 <div id="box1" class="box"></div>
+  	 <div id="box2" class="box"></div>
+  	 <div id="box3" class="box"></div>
+  	 <div id="box4" class="box"></div>
+    </div>
+    <div class="row">
+ 	   <div id="box5" class="box"></div>
+ 	   <div id="box6" class="box"></div>
+ 	   <div id="box7" class="box"></div>
+ 	   <div id="box8" class="box"></div>
+    </div>
+    <div class="row">
+ 	   <div id="box9" class="box"></div>
+ 	   <div id="box10" class="box"></div>
+ 	   <div id="box11" class="box"></div>
+ 	   <div id="box12" class="box"></div>
+    </div>
+    <div class="row">
+  	 <div id="box13" class="box"></div>
+ 	   <div id="box14" class="box"></div>
+ 	   <div id="box15" class="box"></div>
+ 	   <div id="box16" class="box"></div>
+    </div>
+   </div>
+  </div>
+  <div id="gameover" class="gameover">Game Over</div>
+  <div id="descriptionpage" class="descriptionpage">
+  <div id="arrow" class="arrow"><img src="img/left-pointing-arrow.png" width="30" height="30"></div>
+  <div id="languageboxD" class="languageboxD">
+    <div id="languageD" class="languageD"></div>
+    <div id="languagenameD" class="languagenameD"></div>
+  </div>
+  <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  <div>Icons made by <a href="http://www.flaticon.com/authors/egor-rumyantsev" title="Egor Rumyantsev">Egor Rumyantsev</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  <div>Icons made by <a href="http://www.flaticon.com/authors/amit-jakhu" title="Amit Jakhu">Amit Jakhu</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  </div>
+  <div id="languageF" class="languageF">
+    <div id="englishF" class="englishF">English</div>
+    <div id="deutschF" class="deutschF">Deutsch</div>
+    <div id="arrowF" class="arrowF"><img src="img/righ-arrow.png" width="40" height="40"></div>
+</div>
+     <div id="sound" class="option"></div>
+     <div id="help" class="option"></div>
+     <div id="daynight" class="option"></div>
+     <div id="description" class="option"></div>
+     <div id="soundgo"></div> 
+   <script src="spiel.js"></script>
+ </body>
+</html>
+<!--
+<img src="volume-control.png" width="14" height="14">
+<img src="question-mark.png" width="14" height="14">
+<img src="half-moon.png" width="14" height="14">
+<img src="menu.png" width="14" height="14">
+-->
