@@ -236,7 +236,6 @@ arrowF.addEventListener("click",function(){
 }
 highscoreBox.innerHTML="<img src='img/crown.png' width='30' height='30'>"+"  "+highscore;
 
-
 playbutton.style.backgroundColor="rgb(255,207,0)";
 playbutton.addEventListener('click',function(){
     gOf=1;
