@@ -236,16 +236,6 @@ arrowF.addEventListener("click",function(){
 }
 highscoreBox.innerHTML="<img src='img/crown.png' width='30' height='30'>"+"  "+highscore;
 
-    highscoreBox.innerHTML="<img src='img/crown.png' width='30' height='30'>"+"  "+highscore;
-        frontpage.style.display="block";
-        languageF.style.display="none";
-    highscoreBox.style.display="block";
-    for (var i = option.length - 1; i >= 0; i--) {
-        option[i].style.display="block";
-    } 
-    }
-    }
-})
 
 playbutton.style.backgroundColor="rgb(255,207,0)";
 playbutton.addEventListener('click',function(){
