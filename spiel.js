@@ -212,17 +212,30 @@ arrowF.addEventListener("click",function(){
             languageD.innerHTML="Sprache:"
         }
     if(localStorage.highscoreS){
+     highscore=Number(localStorage.highscoreS);
         descriptionpage.style.display="block";
     highscoreBox.style.display="block";
     for (var i = option.length - 1; i >= 0; i--) {
         option[i].style.display="block";
     } 
     }else{
+     localStorage.highscoreS=0;
+
+        frontpage.style.display="block";
+        languageF.style.display="none";
+    highscoreBox.style.display="block";
+    for (var i = option.length - 1; i >= 0; i--) {
+        option[i].style.display="block";
+    } 
+    }
+    }
+})
+
     if(localStorage.highscoreS){
      highscore=Number(localStorage.highscoreS);
-    }else{
-     localStorage.highscoreS=0;
 }
+highscoreBox.innerHTML="<img src='img/crown.png' width='30' height='30'>"+"  "+highscore;
+
     highscoreBox.innerHTML="<img src='img/crown.png' width='30' height='30'>"+"  "+highscore;
         frontpage.style.display="block";
         languageF.style.display="none";
