@@ -12,6 +12,9 @@ if(window.innerWidth>=415){
     k=415/350;
 }
 
+if(localStorage.dayonightS){
+    localStorage.clear();
+}
 var nightColors=['rgb(245, 223, 0)','rgb(28, 223, 95)','rgb(56, 128, 245)','rgb(255, 47, 150)','rgb(255, 166, 47)'];
 var dayColors=['rgb(245, 234, 118)','rgb(123, 223, 158)','rgb(121, 169, 245)','#FF89C4','rgb(255, 199, 124)'];
 var colors=nightColors;
@@ -26,14 +29,14 @@ var points_false=2;
 var scorebox=document.getElementById("scorebox");
 var time=document.getElementById("time");
 var time_width=time.offsetWidth;
-var minus_time=10;
-var plus_time=10;
+var minus_time=10*k;
+var plus_time=10*k;
 var a=1500;
 var e=1;
 var timeout=0;
 var timearray= [];
 var volume=0;
-var dayonight=0;
+var dayOnight=0;
 var mitteEcke=0;
 gOf=0;
 var box1=document.getElementById("box1");
@@ -76,12 +79,12 @@ var languageNameD=document.getElementById('languageNameD');
 
 var highscore=0;
 
-if(localStorage.dayonightS){
-    dayonight=Number(localStorage.dayonightS);
+if(localStorage.dayOnightS){
+    dayOnight=Number(localStorage.dayOnightS);
 }else{
-    localStorage.dayonightS = dayonight;
+    localStorage.dayOnightS = dayOnight;
 }
-if(dayonight==0){
+if(dayOnight==0){
 if(window.innerWidth<350){
     logo.innerHTML="<img src='img/logoN.png' width='110' height='27'>";
 }
@@ -185,13 +188,14 @@ descriptionpage.style.display="none";
 
 if(localStorage.languageS){
     languageF.style.display="none";
-    highscoreBox.style.innerHTML=1;
 }else{
     frontpage.style.display="none";
     highscoreBox.style.display="none";
     for (var i = option.length - 1; i >= 0; i--) {
         option[i].style.display="none";
     } 
+}
+
     englishF.addEventListener("click",function(){
         englishF.style.backgroundColor="rgb(255,207,0)";
         deutschF.style.backgroundColor="rgb(225,220,238)";
@@ -202,11 +206,10 @@ if(localStorage.languageS){
         englishF.style.backgroundColor="rgb(225,220,238)";
         localStorage.languageS="Deutsch";
     })
-}
 arrowF.addEventListener("click",function(){
     if(localStorage.languageS){
         languagenameD.innerHTML=localStorage.languageS;
-        if(localStorage.languageS=="english"){
+        if(localStorage.languageS=="English"){
             languageD.innerHTML="language:";
         }else{
             languageD.innerHTML="Sprache:"
@@ -214,6 +217,34 @@ arrowF.addEventListener("click",function(){
     if(localStorage.highscoreS){
      highscore=Number(localStorage.highscoreS);
         descriptionpage.style.display="block";
+    highscoreBox.style.display="none";
+        languageF.style.display="none";
+        frontpage.style.display="none";
+    for (var i = option.length - 1; i >= 0; i--) {
+        option[i].style.display="none";
+    } 
+    }else{
+     localStorage.highscoreS=0;
+        frontpage.style.display="block";
+        languageF.style.display="none";
+    highscoreBox.style.display="block";
+    for (var i = option.length - 1; i >= 0; i--) {
+        option[i].style.display="block";
+    } 
+    }
+    }
+})
+
+    if(localStorage.languageS){
+        languagenameD.innerHTML=localStorage.languageS;
+        if(localStorage.languageS=="English"){
+            languageD.innerHTML="Language:";
+        }else{
+            languageD.innerHTML="Sprache:"
+        }
+    if(localStorage.highscoreS){
+     highscore=Number(localStorage.highscoreS);
+        descriptionpage.style.display="none";
     highscoreBox.style.display="block";
     for (var i = option.length - 1; i >= 0; i--) {
         option[i].style.display="block";
@@ -229,11 +260,25 @@ arrowF.addEventListener("click",function(){
     } 
     }
     }
-})
-
     if(localStorage.highscoreS){
      highscore=Number(localStorage.highscoreS);
 }
+languagenameD.addEventListener("click",function(){
+        frontpage.style.display="none";
+        languageF.style.display="block";
+    highscoreBox.style.display="none";
+    for (var i = option.length - 1; i >= 0; i--) {
+        option[i].style.display="none";
+    } 
+    descriptionpage.style.display="none";
+    if(localStorage.languageS=="English"){
+        englishF.style.backgroundColor="rgb(255,207,0)";
+        deutschF.style.backgroundColor="rgb(225,220,238)";
+     }else{
+        deutschF.style.backgroundColor="rgb(255,207,0)";
+        englishF.style.backgroundColor="rgb(225,220,238)";
+    }
+})
 highscoreBox.innerHTML="<img src='img/crown.png' width='30' height='30'>"+"  "+highscore;
 
 playbutton.style.backgroundColor="rgb(255,207,0)";
@@ -284,6 +329,7 @@ box16.style.backgroundColor= color;
 
 scorebox.innerHTML=score;
 time.style.backgroundColor=color;
+
 }
 });
 var timeI =setInterval(function(){
@@ -373,7 +419,7 @@ if(window.innerWidth<350){
         }
         option[2].innerHTML="<img src='img/question-mark.png' width='55' height='55'>";
         option[3].innerHTML="<img src='img/menu.png' width='55' height='55'>";
-        if(dayonight==0){
+        if(dayOnight==0){
             daynight.innerHTML="<img src='img/half-moon.png' width='55' height='55'>";
         }else{
             daynight.innerHTML="<img src='img/sunny-day.png' width='55' height='55'>";
@@ -387,7 +433,7 @@ if(window.innerWidth>=350&&window.innerWidth<380){
         }
         option[2].innerHTML="<img src='img/question-mark.png' width='65' height='65'>";
         option[3].innerHTML="<img src='img/menu.png' width='65' height='65'>";
-        if(dayonight==0){
+        if(dayOnight==0){
             daynight.innerHTML="<img src='img/half-moon.png' width='65' height='65'>";
         }else{
             daynight.innerHTML="<img src='img/sunny-day.png' width='65' height='65'>";
@@ -401,7 +447,7 @@ if(window.innerWidth>=380&&window.innerWidth<415){
         }
         option[2].innerHTML="<img src='img/question-mark.png' width='70' height='70'>";
         option[3].innerHTML="<img src='img/menu.png' width='70' height='70'>";
-        if(dayonight==0){
+        if(dayOnight==0){
             daynight.innerHTML="<img src='img/half-moon.png' width='70' height='70'>";
         }else{
             daynight.innerHTML="<img src='img/sunny-day.png' width='70' height='70'>";
@@ -415,7 +461,7 @@ if(window.innerWidth>=415){
         }
         option[2].innerHTML="<img src='img/question-mark.png' width='77' height='77'>";
         option[3].innerHTML="<img src='img/menu.png' width='77' height='77'>";
-        if(dayonight==0){
+        if(dayOnight==0){
             daynight.innerHTML="<img src='img/half-moon.png' width='77' height='77'>";
         }else{
             daynight.innerHTML="<img src='img/sunny-day.png' width='77' height='77'>";
@@ -489,7 +535,7 @@ document.addEventListener('click',function(){
     if(volume==0){
     soundgo.innerHTML='' ;
 }
-    if(dayonight==0){
+    if(dayOnight==0){
     document.body.style.background = "rgba(95,82,91,1)";
 }else{
     document.body.style.background='rgb(160,124,149)';
@@ -625,9 +671,9 @@ daynight.addEventListener('click',function(){
     }else{
         game.style.display="block";
     }
-        if(dayonight==1){
-            dayonight=0;
-            localStorage.dayonightS = dayonight;
+        if(dayOnight==1){
+            dayOnight=0;
+            localStorage.dayOnightS = dayOnight;
 
 if(window.innerWidth<350){
     logo.innerHTML="<img src='img/logoN.png' width='110' height='27'>";
@@ -664,8 +710,8 @@ if(window.innerWidth>=415){
             }
         }
         }else{
-            dayonight=1;
-    localStorage.dayonightS = dayonight;
+            dayOnight=1;
+    localStorage.dayOnightS = dayOnight;
 
 if(window.innerWidth<350){
     logo.innerHTML="<img src='img/logoD.png' width='110' height='27'>";
@@ -765,7 +811,7 @@ box1.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box1.style.backgroundColor==color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -801,7 +847,7 @@ box2.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box2.style.backgroundColor==color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -836,7 +882,7 @@ box3.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box3.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -871,7 +917,7 @@ box4.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box4.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -906,7 +952,7 @@ box5.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box5.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -941,7 +987,7 @@ box6.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box6.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -976,7 +1022,7 @@ box7.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box7.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1011,7 +1057,7 @@ box8.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box8.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1046,7 +1092,7 @@ box9.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box9.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1081,7 +1127,7 @@ box10.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box10.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1116,7 +1162,7 @@ box11.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box11.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1151,7 +1197,7 @@ box12.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box12.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1186,7 +1232,7 @@ box13.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box13.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1221,7 +1267,7 @@ box14.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box14.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1256,7 +1302,7 @@ box15.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box15.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
@@ -1291,7 +1337,7 @@ box16.addEventListener('click',function(){
     if(mitteEcke==0){
     color=time.style.backgroundColor;
     if(box16.style.backgroundColor===color){
-        if(dayonight==1){
+        if(dayOnight==1){
             colors=dayColors;
         }else{
             colors=nightColors;
