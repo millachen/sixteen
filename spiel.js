@@ -14,6 +14,7 @@ if(window.innerWidth>=415){
 
 if(localStorage.dayonightS){
     localStorage.clear();
+	localStorage.removeItem('dayonightS');
 }
 var nightColors=['rgb(245, 223, 0)','rgb(28, 223, 95)','rgb(56, 128, 245)','rgb(255, 47, 150)','rgb(255, 166, 47)'];
 var dayColors=['rgb(245, 234, 118)','rgb(123, 223, 158)','rgb(121, 169, 245)','#FF89C4','rgb(255, 199, 124)'];
