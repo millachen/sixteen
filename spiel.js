@@ -12,7 +12,7 @@ if(window.innerWidth>=415){
     k=415/350;
 }
 
-if(localStorage.dayORnightS){
+if(localStorage.dayonightS){
     localStorage.clear();
 }
 var nightColors=['rgb(245, 223, 0)','rgb(28, 223, 95)','rgb(56, 128, 245)','rgb(255, 47, 150)','rgb(255, 166, 47)'];
