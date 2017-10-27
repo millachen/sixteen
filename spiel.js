@@ -14,7 +14,6 @@ if(window.innerWidth>=415){
 
 if(localStorage.dayonightS){
     localStorage.clear();
-	localStorage.removeItem('dayonightS');
 }
 var nightColors=['rgb(245, 223, 0)','rgb(28, 223, 95)','rgb(56, 128, 245)','rgb(255, 47, 150)','rgb(255, 166, 47)'];
 var dayColors=['rgb(245, 234, 118)','rgb(123, 223, 158)','rgb(121, 169, 245)','#FF89C4','rgb(255, 199, 124)'];
@@ -76,9 +75,34 @@ var deutschF=document.getElementById('deutschF');
 var arrowF=document.getElementById('arrowF');
 var languageBoxD=document.getElementById('languageBoxD');
 var languageD=document.getElementById('languageD');
-var languageNameD=document.getElementById('languageNameD');
+var languageNameD=document.getElementById('languagenameD');
+
+var info=document.getElementById('info');
+var minusI=document.getElementById('minus');
+var plusI=document.getElementById('plus');
+var leftI=document.getElementById('leftI');
+var rightI=document.getElementById('rightI');
 
 var highscore=0;
+
+info.style.display="none";
+
+plusI.addEventListener('click',function(){
+    minusI.style.display="block";
+    plusI.style.display="none";
+})
+
+minusI.addEventListener('click',function(){
+    info.style.display="none";
+    plusI.style.display="block";
+    minusI.style.display="none";
+    logo.style.display="block";
+    frontpage.style.display="block";
+    highscoreBox.style.display="block";
+    for (var i = option.length - 1; i >= 0; i--) {
+        option[i].style.display="block";
+    } 
+})
 
 if(localStorage.dayORnightS){
     dayORnight=Number(localStorage.dayORnightS);
@@ -86,6 +110,8 @@ if(localStorage.dayORnightS){
     localStorage.dayORnightS = dayORnight;
 }
 if(dayORnight==0){
+    languageNameD.style.backgroundColor="rgb(83,72,80)";
+    languageNameD.style.borderColor="rgb(160,124,149)";
 if(window.innerWidth<350){
     logo.innerHTML="<img src='img/logoN.png' width='110' height='27'>";
 }
@@ -109,6 +135,8 @@ if(window.innerWidth>=415){
             }
         }
         }else{
+            languageNameD.style.backgroundColor="rgb(134,104,125)";
+            languageNameD.style.borderColor="rgb(200,162,189)"
 if(window.innerWidth<350){
     logo.innerHTML="<img src='img/logoD.png' width='110' height='27'>";
 }
@@ -212,8 +240,12 @@ arrowF.addEventListener("click",function(){
         languagenameD.innerHTML=localStorage.languageS;
         if(localStorage.languageS=="English"){
             languageD.innerHTML="language:";
+        plusI.innerHTML="<img src='img/plusEng.png' width=100%>";
+        minusI.innerHTML="<img src='img/minusEng.png' width=100%>";
         }else{
             languageD.innerHTML="Sprache:"
+        plusI.innerHTML="<img src='img/plusDeu.png' width=100%>";
+        minusI.innerHTML="<img src='img/minusDeu.png' width=100%>";
         }
     if(localStorage.highscoreS){
      highscore=Number(localStorage.highscoreS);
@@ -226,12 +258,10 @@ arrowF.addEventListener("click",function(){
     } 
     }else{
      localStorage.highscoreS=0;
-        frontpage.style.display="block";
         languageF.style.display="none";
-    highscoreBox.style.display="block";
-    for (var i = option.length - 1; i >= 0; i--) {
-        option[i].style.display="block";
-    } 
+    info.style.display="block";
+    minusI.style.display="none";
+    logo.style.display="none";
     }
     }
 })
@@ -240,8 +270,12 @@ arrowF.addEventListener("click",function(){
         languagenameD.innerHTML=localStorage.languageS;
         if(localStorage.languageS=="English"){
             languageD.innerHTML="Language:";
+        plusI.innerHTML="<img src='img/plusEng.png' width=100%>";
+        minusI.innerHTML="<img src='img/minusEng.png' width=100%>";
         }else{
-            languageD.innerHTML="Sprache:"
+            languageD.innerHTML="Sprache:";
+        plusI.innerHTML="<img src='img/plusDeu.png' width=100%>";
+        minusI.innerHTML="<img src='img/minusDeu.png' width=100%>";
         }
     if(localStorage.highscoreS){
      highscore=Number(localStorage.highscoreS);
@@ -275,9 +309,13 @@ languagenameD.addEventListener("click",function(){
     if(localStorage.languageS=="English"){
         englishF.style.backgroundColor="rgb(255,207,0)";
         deutschF.style.backgroundColor="rgb(225,220,238)";
+        plusI.innerHTML="<img src='img/plusEng.png' width=100%>";
+        minusI.innerHTML="<img src='img/minusEng.png' width=100%>";
      }else{
         deutschF.style.backgroundColor="rgb(255,207,0)";
         englishF.style.backgroundColor="rgb(225,220,238)";
+        plusI.innerHTML="<img src='img/plusDeu.png' width=100%>";
+        minusI.innerHTML="<img src='img/minusDeu.png' width=100%>";
     }
 })
 highscoreBox.innerHTML="<img src='img/crown.png' width='30' height='30'>"+"  "+highscore;
@@ -702,6 +740,7 @@ if(window.innerWidth>=415){
 }
             colors=nightColors;
             document.body.style.background='rgba(95,82,91,1)';
+            languageNameD.style.borderColor="rgb(160,124,149)";
             daynight.style.backgroundColor='rgb(111,151,237)';
         if(game.style.display=="block"){
             for (var x = dayColors.length - 1; x >= 0; x--) {
@@ -740,6 +779,7 @@ if(window.innerWidth>=415){
 }
             colors=dayColors;
             document.body.style.background='rgb(160,124,149)';
+            languageNameD.style.borderColor="rgb(200,162,189)";s
             daynight.style.backgroundColor='rgb(230,216,72)';
         if(game.style.display=="block"){
             for (var i = nightColors.length - 1; i >= 0; i--) {
@@ -754,7 +794,7 @@ if(window.innerWidth>=415){
             },10)
     }
 })
-help.addEventListener('click','click',function(){
+help.addEventListener('click',function(){
     if(mitteEcke==0){
         Mitte();
         if(game.style.display=="block"){
@@ -769,6 +809,14 @@ help.addEventListener('click','click',function(){
         game.style.display="block";
     }
         
+        frontpage.style.display="none";
+    info.style.display="block";
+    minusI.style.display="none";
+    highscoreBox.style.display="none";
+    for (var i = option.length - 1; i >= 0; i--) {
+        option[i].style.display="none";
+    }
+    logo.style.display="none";
         setTimeout(function(){
         punkt=1;
     },10)
