@@ -80,8 +80,6 @@ var languageNameD=document.getElementById('languagenameD');
 var info=document.getElementById('info');
 var minusI=document.getElementById('minus');
 var plusI=document.getElementById('plus');
-var leftI=document.getElementById('leftI');
-var rightI=document.getElementById('rightI');
 
 var highscore=0;
 
