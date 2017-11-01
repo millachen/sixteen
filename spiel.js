@@ -1,3 +1,64 @@
+var context;
+window.addEventListener('load', init, false);
+function init() {
+  try {
+    // Fix up for prefixing
+    window.AudioContext = window.AudioContext||window.webkitAudioContext;
+    context = new AudioContext();
+  }
+  catch(e) {
+    alert('Web Audio API is not supported in this browser');
+  }
+}
+
+var dogBarkingBuffer = null;
+// Fix up prefixing
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
+
+function loadFalseSound(url) {
+  var request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.responseType = 'arraybuffer';
+
+  // Decode asynchronously
+  request.onload = function() {
+    context.decodeAudioData(request.response, function(buffer) {
+      falseBuffer = buffer;
+    }, );
+  }
+  request.send();
+}
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
+loadFalseSound("false.mp3");
+
+function loadGoSound(url) {
+  var request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.responseType = 'arraybuffer';
+
+  // Decode asynchronously
+  request.onload = function() {
+    context.decodeAudioData(request.response, function(buffer) {
+      gameoverBuffer = buffer;
+    }, );
+  }
+  request.send();
+}
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
+loadGoSound("gameover.mp3");
+
+function playSound(buffer) {
+  var source = context.createBufferSource(); // creates a sound source
+  source.buffer = buffer;                    // tell the source which sound to play
+  source.connect(context.destination);       // connect the source to the context's destination (the speakers)
+  source.start(0);                           // play the source now
+                                             // note: on older systems, may have to use deprecated noteOn(time);
+}
+
+
 var k=5;
 if(window.innerWidth<350){
     k=0.857;
@@ -80,6 +141,8 @@ var languageNameD=document.getElementById('languagenameD');
 var info=document.getElementById('info');
 var minusI=document.getElementById('minus');
 var plusI=document.getElementById('plus');
+var leftI=document.getElementById('leftI');
+var rightI=document.getElementById('rightI');
 
 var highscore=0;
 
@@ -318,6 +381,7 @@ languagenameD.addEventListener("click",function(){
 })
 highscoreBox.innerHTML="<img src='img/crown.png' width='30' height='30'>"+"  "+highscore;
 
+
 playbutton.style.backgroundColor="rgb(255,207,0)";
 playbutton.addEventListener('click',function(){
     gOf=1;
@@ -384,7 +448,8 @@ var timeI =setInterval(function(){
     logo.style.display="none";
     gameover.style.display="block"; 
     if(volume==0){
-    soundgo.innerHTML='<embed src="gameover.wav" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    
+    playSound(gameoverBuffer);
 }
     document.body.style.background = 'rgb(225,35,17)';
 }
@@ -739,6 +804,7 @@ if(window.innerWidth>=415){
             colors=nightColors;
             document.body.style.background='rgba(95,82,91,1)';
             languageNameD.style.borderColor="rgb(160,124,149)";
+            languageNameD.style.backgroundColor="rgb(84,72,80)";
             daynight.style.backgroundColor='rgb(111,151,237)';
         if(game.style.display=="block"){
             for (var x = dayColors.length - 1; x >= 0; x--) {
@@ -777,7 +843,8 @@ if(window.innerWidth>=415){
 }
             colors=dayColors;
             document.body.style.background='rgb(160,124,149)';
-            languageNameD.style.borderColor="rgb(200,162,189)";s
+            languageNameD.style.borderColor="rgb(200,162,189)";
+            languageNameD.style.backgroundColor="rgb(134,104,125)";
             daynight.style.backgroundColor='rgb(230,216,72)';
         if(game.style.display=="block"){
             for (var i = nightColors.length - 1; i >= 0; i--) {
@@ -879,8 +946,7 @@ box1.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-        soundgo.volume=0.5;
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -915,7 +981,7 @@ box2.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score; 
@@ -950,7 +1016,7 @@ box3.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -985,7 +1051,7 @@ box4.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1020,7 +1086,7 @@ box5.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1055,7 +1121,7 @@ box6.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1090,7 +1156,7 @@ box7.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1125,7 +1191,7 @@ box8.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1160,7 +1226,7 @@ box9.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1195,7 +1261,7 @@ box10.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1230,7 +1296,7 @@ box11.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1265,7 +1331,7 @@ box12.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1300,7 +1366,7 @@ box13.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1335,7 +1401,7 @@ box14.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1370,7 +1436,7 @@ box15.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
@@ -1405,7 +1471,7 @@ box16.addEventListener('click',function(){
 }
 }   else{
     if(volume==0){
-    soundgo.innerHTML='<embed src="false.mp3" autostart="true" loop="false" hidden="true" height="0" width="0">' ;
+    playSound(falseBuffer);
 }
     score=score-points_false;
     scorebox.innerHTML=score;
